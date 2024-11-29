@@ -13,6 +13,8 @@ fn main() {
     blockchain.push_back(Block::new(blockchain.back().unwrap().hash.clone(), "hello world 3".to_string()));
 
     for block in &blockchain {
-        println!("{:?}", block);
+        let serialize = serde_json::to_string_pretty(&block).unwrap();
+
+        println!("{}", serialize);
     }
 }

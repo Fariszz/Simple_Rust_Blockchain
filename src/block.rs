@@ -1,7 +1,8 @@
 use sha256::digest;
 use std::time::{SystemTime, UNIX_EPOCH};
+use serde::{Serialize, Deserialize};
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Block {
     pub hash: String,
     pub prev_hash: String,
@@ -29,8 +30,4 @@ impl Block {
 pub fn calculate_hash(previous_hash: String, data: String, timestamp: u128) -> String {
     let input = format!("{}{}{}", previous_hash, data, timestamp);
     digest(&input)
-}
-
-pub fn is_valid_block(block: &Block, previous_block: &Block) -> bool {
-    block.prev_hash == previous_block.hash && block.hash == calculate_hash(previous_block.hash.clone(), block.data.clone(), block.timestamp)
 }
