@@ -24,8 +24,8 @@ A simple blockchain implementation in Rust that demonstrates the basic concepts 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/simple_blockchain.git
-cd simple_blockchain
+git clone https://github.com/Fariszz/simple_rust_blockchain.git
+cd simple_rust_blockchain
 ```
 
 2. Build the project:
