@@ -2,6 +2,8 @@
 
 A simple blockchain implementation in Rust that demonstrates the basic concepts of blockchain technology. This project creates a chain of blocks where each block contains data and is cryptographically linked to the previous block using SHA-256 hashing.
 
+This implementation is inspired by the tutorial [Create Simple Blockchain Java Tutorial From Scratch](https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa), but reimplemented in Rust to explore the concepts in a different programming language.
+
 ## Features
 
 - Block creation with timestamp
