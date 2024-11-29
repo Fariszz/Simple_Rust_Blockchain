@@ -17,6 +17,8 @@ A simple blockchain implementation in Rust that demonstrates the basic concepts 
 ## Dependencies
 
 - `sha256` - Version 1.4.0 (For cryptographic hashing)
+- `serde` - Version 1.0.188 (For serialization and deserialization)
+- `serde_json` - Version 1.0.105 (For JSON serialization and deserialization)
 
 ## Installation
 
