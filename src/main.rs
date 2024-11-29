@@ -1,4 +1,5 @@
 use sha256::digest;
+use std::collections::LinkedList;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 #[derive(Debug)]
@@ -25,19 +26,20 @@ impl Block {
     }
 }
 
+
 fn main() {
 
-    let block_one = Block::new("".to_string(), "hello world".to_string());
+    let mut blockchain: LinkedList<Block> = LinkedList::new();
 
-    println!("{:?}", block_one);
+    blockchain.push_back(Block::new("".to_string(), "hello world".to_string()));
 
-    let block_two = Block::new(block_one.hash, "hello world 2".to_string());
+    blockchain.push_back(Block::new(blockchain.back().unwrap().hash.clone(), "hello world 2".to_string()));
 
-    println!("{:?}", block_two);
+    blockchain.push_back(Block::new(blockchain.back().unwrap().hash.clone(), "hello world 3".to_string()));
 
-    let block_three = Block::new(block_two.hash, "hello world 3".to_string());
-
-    println!("{:?}", block_three);
+    for block in &blockchain {
+        println!("{:?}", block);
+    }
 }
 
 
@@ -45,4 +47,8 @@ fn main() {
 fn calculate_hash(previous_hash: String, data: String, timestamp: u128) -> String {
     let input = format!("{}{}{}", previous_hash, data, timestamp);
     digest(&input)
+}
+
+fn is_valid_block(block: &Block, previous_block: &Block) -> bool {
+    block.prev_hash == previous_block.hash && block.hash == calculate_hash(previous_block.hash.clone(), block.data.clone(), block.timestamp)
 }
